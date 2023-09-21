@@ -5,10 +5,16 @@ import Category from "../InputField/Category/Category";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Region from "../InputField/Region/Region";
-
-const messageFormSubmittion = () => toast.success("Yayy!! Form Submitted.");
+import { useState } from "react";
 
 const FormFields = () => {
+    const [status, setStatus] = useState(200);
+
+    const messageFormSubmittion = () => toast.success("Yayy!! Form Submitted.");
+    const messageWhileFormSubmittion = () =>
+        toast.info("Please wait for a while for submitting");
+    const errorMessage = () => toast.error("Something went wrong! Try again.");
+
     const member1BasicInfo = [
         [
             {
@@ -66,6 +72,8 @@ const FormFields = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        messageWhileFormSubmittion();
+
         const data = {
             Team_Name: e.target.team_name.value,
             Full_Name_of_Institution: e.target.institution_full_name.value,
@@ -88,15 +96,44 @@ const FormFields = () => {
             Gender3: e.target.gender3.value,
             Category3: e.target.category3.value,
         };
-
+        // https://sheet.best/api/sheets/ec25cc92-4747-4d1b-8e2d-8196d03861af
         axios
             .post(
                 "https://sheet.best/api/sheets/ec25cc92-4747-4d1b-8e2d-8196d03861af",
                 data
             )
             .then((response) => {
-                console.log(response);
+                console.log(response.status);
+
                 messageFormSubmittion();
+
+                setStatus(response.status);
+
+                e.target.team_name.value = "";
+                e.target.institution_full_name.value = "";
+                e.target.code_name.value = "";
+                e.target.team_category.value = "";
+                e.target.region.value = "";
+                e.target.name1.value = "";
+                e.target.email1.value = "";
+                e.target.number1.value = "";
+                e.target.gender1.value = "";
+                e.target.category1.value = "";
+                e.target.name2.value = "";
+                e.target.email2.value = "";
+                e.target.number2.value = "";
+                e.target.gender2.value = "";
+                e.target.category2.value = "";
+                e.target.name3.value = "";
+                e.target.email3.value = "";
+                e.target.number3.value = "";
+                e.target.gender3.value = "";
+                e.target.category3.value = "";
+            })
+            .catch((error) => {
+                setStatus(error.response.status);
+
+                errorMessage();
             });
 
         // console.log(name1, email1, number1, gender1, category1);
@@ -205,6 +242,14 @@ const FormFields = () => {
                 value="Submit"
                 className="btn btn-neutral rounded-md font-bold text-white"
             />
+
+            {status !== 200 ? (
+                <p className="text-red-500 font-bold text-lg">
+                    Something went wrong!
+                </p>
+            ) : (
+                ""
+            )}
         </form>
     );
 };

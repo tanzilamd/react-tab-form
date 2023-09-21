@@ -9,6 +9,7 @@ const Region = () => {
                 name="region"
                 id="region"
                 className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                required
             >
                 <option value="Dhaka">Dhaka</option>
                 <option value="Chittagong">Chittagong</option>

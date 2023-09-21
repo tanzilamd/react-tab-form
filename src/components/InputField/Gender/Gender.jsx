@@ -9,6 +9,7 @@ const Gender = ({ name }) => {
                 name={name}
                 id={name}
                 className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                required
             >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
