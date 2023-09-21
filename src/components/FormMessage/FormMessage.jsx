@@ -1,7 +1,7 @@
 const FormMessage = () => {
     return (
-        <div className="text-gray-600">
-            <p className="font-medium text-lg">Personal Details</p>
+        <div className="">
+            <p className="font-bold text-2xl">Team Details</p>
             <p>Please fill out all the fields.</p>
         </div>
     );

@@ -107,7 +107,9 @@ const FormFields = () => {
             <ToastContainer></ToastContainer>
 
             <div>
-                <h2 className="text-2xl font-bold mb-4">Team Information</h2>
+                <h2 className="text-xl font-bold mb-4 text-gray-600">
+                    Team Information
+                </h2>
 
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <InputField
@@ -137,7 +139,7 @@ const FormFields = () => {
 
             {/* Member 1 */}
             <div>
-                <h2 className="text-2xl font-bold mb-4">Member 1</h2>
+                <h2 className="text-xl font-bold mb-4">Member 1</h2>
 
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     {member1BasicInfo[0].map((element, idx) => (
@@ -158,7 +160,7 @@ const FormFields = () => {
 
             {/* Member 2 */}
             <div>
-                <h2 className="text-2xl font-bold mb-4">Member 2</h2>
+                <h2 className="text-xl font-bold mb-4">Member 2</h2>
 
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     {member1BasicInfo[1].map((element, idx) => (
@@ -179,7 +181,7 @@ const FormFields = () => {
 
             {/* Member 3 */}
             <div>
-                <h2 className="text-2xl font-bold mb-4">Member 3</h2>
+                <h2 className="text-xl font-bold mb-4">Member 3</h2>
 
                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     {member1BasicInfo[2].map((element, idx) => (
@@ -201,7 +203,7 @@ const FormFields = () => {
             <input
                 type="submit"
                 value="Submit"
-                className="py-2 px-4 rounded-md bg-slate-400 text-md font-bold text-white"
+                className="btn btn-neutral rounded-md font-bold text-white"
             />
         </form>
     );
